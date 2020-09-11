@@ -1,0 +1,37 @@
+v#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the appendAndDelete function below.
+def appendAndDelete(s, t, k):
+    same = 0
+    not_same = 0
+    for i in s:
+        if i in t:
+            same +=1
+        else:
+            not_same +=1
+    if k >= len(t) - same + not_same:
+        return "Yes"
+    else:
+        return "No"
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    t = input()
+
+    k = int(input())
+
+    result = appendAndDelete(s, t, k)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
