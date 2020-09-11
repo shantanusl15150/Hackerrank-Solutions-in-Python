@@ -1,0 +1,31 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the viralAdvertising function below.
+def viralAdvertising(n):
+    total = 0
+    per_day = 0
+    for i in range(1, n+1):
+        if i == 1:
+            per_day = math.floor(5/2)*3
+            total += per_day/3
+        else:
+            per_day = math.floor(per_day/2)*3
+            total+= per_day/3
+    return int(total)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
