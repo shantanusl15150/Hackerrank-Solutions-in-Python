@@ -1,0 +1,21 @@
+def acmTeam(topic):
+    max_subj = []
+    for i in range(len(topic)):
+        for j in range(i + 1, len(topic)):
+            value = 0
+            for k, l in zip(topic[i], topic[j]):
+                if k or l:
+                    value += 1
+            max_subj.append(value)
+    max_value = max(max_subj)
+    return [max_value, max_subj.count(max_value)]
+nm = input().split()
+n = int(nm[0])
+m = int(nm[1])
+topic = []
+for _ in range(n):
+        topic_item = list(map(int, list(input())))
+        topic.append(topic_item)
+a = acmTeam(topic)
+for i in a:
+    print(i)
