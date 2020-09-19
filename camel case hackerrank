@@ -1,0 +1,28 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the camelcase function below.
+def camelcase(s):
+    li = list(range(65, 91))
+    list_s = [int(ord(i)) for i in s]
+    counter = 0
+    for i in list_s:
+        if i in li:
+            counter += 1
+    return counter + 1
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = camelcase(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
