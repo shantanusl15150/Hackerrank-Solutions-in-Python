@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the hackerrankInString function below.
+def hackerrankInString(s):
+    a = list('hackerrank')
+    i = 0
+    j = 0
+    while(i < len(s) - 1 and j < len(a) - 1):
+        if s[i] == a[j]:
+            j += 1
+        i += 1
+    if j == 9:
+        return "YES"
+    else:
+        return "NO"
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = hackerrankInString(s)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
