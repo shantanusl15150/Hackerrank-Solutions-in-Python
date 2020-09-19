@@ -1,0 +1,38 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the caesarCipher function below.
+def caesarCipher(s, k):
+    k = k%26
+    s = [int(ord(i)) for i in s]
+    for i in range(len(s)):
+        if s[i] in list(range(65, 91 - k)):
+             s[i] += k
+        elif s[i] in list(range(91 - k, 91)):
+            s[i] = s[i] + k - 26
+        elif s[i] in list(range(97, 123 - k)):
+            s[i] += k
+        elif s[i] in list(range(123 - k, 123)):
+            s[i] = s[i] + k -26
+    a = ''.join([chr(i) for i in s])
+    return a
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    s = input()
+
+    k = int(input())
+
+    result = caesarCipher(s, k)
+
+    fptr.write(result)
+
+    fptr.close()
