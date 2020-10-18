@@ -1,31 +1,17 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
-# Complete the separateNumbers function below.
+def sequential(s,sub_string):
+    if not s: return True
+    if s.startswith(sub_string):
+        l = len(sub_string)
+        return sequential(s[l:],str(int(sub_string)+1))
+    return False
+    
 def separateNumbers(s):
-    for a in range(1, math.ceil(len(s)/2)):
-        string = ''
-        num = int(s[:a])
-        while((len(string) <= len(s))):
-            string += str(num)
-            num += 1
-            if string == s:
-                return "YES" + " " + s[:a]
-    else:
-        return "NO"
+    for i in range(1,len(s)//2+1):
+        sub_string = s[:i]
+        if sequential(s,sub_string):
+            return "YES "+sub_string
+    return "NO"
 
-
-
-
-if __name__ == '__main__':
-    q = int(input())
-
-    for q_itr in range(q):
-        s = input()
-
-        print(separateNumbers(s))
+for _ in range(int(input())):
+    s = input()
+    print(separateNumbers(s))
