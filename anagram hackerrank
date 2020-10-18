@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the anagram function below.
+def anagram(s):
+    count = 0
+    if len(s)%2 != 0:
+        return -1
+    else:
+        string_1 = list(s[:math.ceil(len(s)/2)])
+        string_2 = list(s[math.ceil(len(s)/2):])
+
+        for i in string_1:
+            if i in string_2:
+                string_2.pop(string_2.index(i))
+            elif i not in string_2:
+                count += 1
+    return count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = anagram(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
